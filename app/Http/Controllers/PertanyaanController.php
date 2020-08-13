@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 
 class PertanyaanController extends Controller
 {
-    public function create(){
+
+    public function create()
+    {
         return view('posts.create');
-}
+	}
+
 }
