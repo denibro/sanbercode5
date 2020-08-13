@@ -16,9 +16,10 @@ Route::get('/', function () {
 });
 
 
-Route::get('/pertanyaan', function () {
-    return view('master');
-});
+Route::get('/pertanyaan/create', 'PertanyaanController@create');
+
+
+
 
 
 
