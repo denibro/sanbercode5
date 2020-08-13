@@ -11,7 +11,6 @@
         </div>
     @endif
     
-    <!-- <a href="" class="btn btn-primary px-5 my-3">Tambah pertanyaan</a> -->
     <ul class="list-group">
       	@foreach($pertanyaans as $pertanyaan)
           <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -21,7 +20,9 @@
               <h6 class="text-muted">{{ $pertanyaan->created_at }}</h6>
               <h6 class="text-muted">{{ $pertanyaan->updated_at }}</h6>
             </span>
-            <a href="/pertanyaan/{{ $pertanyaan->id_pertanyaan }}" class="badge badge-primary badge-pill">Detail</a>
+            <a href="{{route('jawaban.create')}}" class="badge badge-primary badge-pill">Bantu Jawab</a>
+            <a href="" class="badge badge-primary badge-pill">Upvote</a>
+            <a href="" class="badge badge-primary badge-pill">Downvote</a>
           </li>
         @endforeach
     </ul>

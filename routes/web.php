@@ -18,6 +18,7 @@ Route::get('/', function () {
 
 Route::get('/pertanyaan/create', 'PertanyaanController@create');
 Route::get('/pertanyaan/umum','PertanyaanUmumController@index');
+Route::resource('jawaban', 'JawabanController');
 
 
 
