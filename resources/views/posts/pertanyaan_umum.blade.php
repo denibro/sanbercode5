@@ -1,5 +1,5 @@
 
-    <h2>Pertanyaan Umum</h2>
+    <h2>Pertanyaan Umummm</h2>
     @if (session('status_udah'))
         <div class="alert alert-success">
             {{ session('status_udah') }}
