@@ -14,3 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/pertanyaan', function () {
+    return view('master');
+});
+
+
+
+
