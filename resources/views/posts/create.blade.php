@@ -4,7 +4,7 @@
       <div class="ml-2 mt-2">
         <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Membuat Pertanyaan Baru</h3>
+                <h3 class="card-title">Buat Pertanyaan</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->

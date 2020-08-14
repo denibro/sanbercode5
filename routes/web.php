@@ -19,6 +19,7 @@ Route::get('/', function () {
 Route::get('/pertanyaan/create', 'PertanyaanController@create');
 Route::get('/pertanyaan/umum','PertanyaanUmumController@index');
 Route::resource('jawaban', 'JawabanController');
+Route::get('/pertanyaan/pribadi','PertanyaanPribadiController@index2');
 
 
 
@@ -26,3 +27,7 @@ Route::resource('jawaban', 'JawabanController');
 
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
