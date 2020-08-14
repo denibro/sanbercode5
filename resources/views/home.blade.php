@@ -4,19 +4,15 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Form pertanyaan kita isi disini</div>
+            <div class="card text-center">
+                <div class="card-header">Silahkan Masuk</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                    @endif
-
-                    @include('beranda.utama')
+                   <a href="/beranda" class="btn btn-danger">Beranda</a>
+                   <a href="/profile" class="btn btn-primary ml-2">Profile</a>
 
                 </div>
+
             </div>
         </div>
     </div>

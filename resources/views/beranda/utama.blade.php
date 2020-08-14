@@ -1,7 +1,6 @@
 @extends('adminlte/master')
 
 @section('title', 'Beranda')
-@section('judul', 'Beranda')
 
 @section('content')
 
@@ -15,7 +14,9 @@
     {{ session('status') }}
 </div>
 @endif
-
+<div class="text-center font-weight-bold pt-3">
+  <h3>Beranda</h3>
+</div>
 <ul class="list-group">
     @foreach($pertanyaans as $pertanyaan)
     <li class="list-group-item d-flex justify-content-between align-items-center">
