@@ -18,23 +18,9 @@ use Illuminate\Support\Facades\Route;
 //     return view('beranda/utama');
 // });
 
-
-<<<<<<< HEAD
-Route::get('/pertanyaan/create', 'PertanyaanController@create');
-Route::get('/','PertanyaanController@index');
-Route::resource('jawaban', 'JawabanController');
-Route::get('/profile','PertanyaanController@index2');
-
-
-
-
-
-
-
-=======
+Route::get('/', 'PertanyaanController@index');
 Route::resource('pertanyaan', 'PertanyaanController');
 Route::resource('jawaban', 'JawabanController');
->>>>>>> 0413778ef52e4adf6d3eb78b5934d8009216def1
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

@@ -18,7 +18,7 @@ class PertanyaanController extends Controller
     public function index()
     {
         $pertanyaans = Pertanyaan::all();
-        return view('beranda.utama', compact('pertanyaans'));
+        return view('beranda.utama', ['pertanyaans' => $pertanyaans]);
     }
 
     public function index2()
