@@ -14,14 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('beranda/utama');
-// });
+Route::get('/coba', function () {
+    return view('profile.coba');
+});
 
 
-<<<<<<< HEAD
+// <<<<<<< HEAD
 Route::get('/pertanyaan/create', 'PertanyaanController@create');
-Route::get('/','PertanyaanController@index');
+Route::get('/beranda','PertanyaanController@index');
 Route::resource('jawaban', 'JawabanController');
 Route::get('/profile','PertanyaanController@index2');
 
@@ -31,10 +31,10 @@ Route::get('/profile','PertanyaanController@index2');
 
 
 
-=======
+// =======
 Route::resource('pertanyaan', 'PertanyaanController');
 Route::resource('jawaban', 'JawabanController');
->>>>>>> 0413778ef52e4adf6d3eb78b5934d8009216def1
+// >>>>>>> 0413778ef52e4adf6d3eb78b5934d8009216def1
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

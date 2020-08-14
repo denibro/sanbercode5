@@ -15,6 +15,10 @@ class PertanyaanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+    }
     public function index()
     {
         $pertanyaans = Pertanyaan::all();
@@ -23,7 +27,8 @@ class PertanyaanController extends Controller
 
     public function index2()
     {
-        $pertanyaans = Pertanyaan::all();
+        $user = Auth::user();
+        $pertanyaans = $user->pertanyaan;
         return view('profile.pertanyaan_pribadi', compact('pertanyaans'));
     }
 
