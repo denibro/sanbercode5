@@ -41,4 +41,24 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Pertanyaan','user_id');
     }
+    public function jawaban()
+    {
+        return $this->hasMany('App\Jawaban','user_id');
+    }
+    public function vote_pertanyaan()
+    {
+        return $this->hasMany('App\Vote_pertanyaan','user_id');
+    }
+    public function vote_jawaban()
+    {
+        return $this->hasMany('App\Vote_jawaban','user_id');
+    }
+    public function komen_pertanyaan()
+    {
+        return $this->hasMany('App\Komen_pertanyaan','user_id');
+    }
+    public function komen_jawaban()
+    {
+        return $this->hasMany('App\Komen_jawaban','user_id');
+    }
 }

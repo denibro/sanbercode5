@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Pertanyaan;
+use App\User;
+use App\Vote_pertanyaan;
 use Illuminate\Support\Facades\Auth;
 
 class PertanyaanController extends Controller
@@ -29,7 +31,9 @@ class PertanyaanController extends Controller
     {
         $user = Auth::user();
         $pertanyaans = $user->pertanyaan;
-        return view('profile.pertanyaan_pribadi', compact('pertanyaans'));
+        // $profile = User::where('name',Auth::user()->name)->first();
+        // dd($vote);
+        return view('profile.pertanyaan_pribadi', ['pertanyaans'=>$pertanyaans,'user'=>$user]);
     }
 
     /**

@@ -17,6 +17,8 @@ class CreatePertanyaansTable extends Migration
             $table->bigIncrements('id_pertanyaan');
             $table->string('judul');
             $table->string('isi');
+            $table->integer('upvote');
+            $table->integer('downvote');
             $table->timestamps();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
