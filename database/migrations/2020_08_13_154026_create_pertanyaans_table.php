@@ -19,9 +19,7 @@ class CreatePertanyaansTable extends Migration
             $table->string('isi');
             $table->timestamps();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('tag_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('tag_id')->references('id')->on('tanya_tags');
         });
     }
 

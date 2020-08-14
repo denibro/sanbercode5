@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Jawaban;
-use App\TagJawaban;
+use App\Tags;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -40,8 +40,8 @@ class Jawabancontroller extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'isi'=>'required',
-            'tag'=>'required'
+            'isi' => 'required',
+            'tag' => 'required'
         ]);
 
         $tags = explode(',', $request->tag);
@@ -49,24 +49,20 @@ class Jawabancontroller extends Controller
         // dd($tags);
         $tag_ids = [];
         //sava jika belum ada kalau sudah ada tampung
-        foreach ($tags as $tag_nama) 
-        {
-            $tag = TagJawaban::where("nama_tag",$tag_nama)->first();
+        foreach ($tags as $tag_nama) {
+            $tag = Tags::where("nama_tag", $tag_nama)->first();
 
-            if ($tag) 
-            {
+            if ($tag) {
                 $tag_ids[] =  $tag->id;
-            }
-            else
-            {
-                $new_tag = TagJawaban::create(["nama_tag"=>$tag_nama]);
+            } else {
+                $new_tag = Tags::create(["nama_tag" => $tag_nama]);
                 $tag_ids[] = $new_tag->id;
             }
         }
         $jawaban = new Jawaban;
         $jawaban->isi = $request->isi;
         $jawaban->save();
-        return redirect('/jawaban/create')->with('status_done','Pertanyaan Berhasil Ditambahkan');
+        return redirect('/jawaban/create')->with('status_done', 'Pertanyaan Berhasil Ditambahkan');
     }
 
     /**
