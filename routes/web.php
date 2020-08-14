@@ -11,15 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('beranda/utama');
+// });
 
 
 Route::get('/pertanyaan/create', 'PertanyaanController@create');
-Route::get('/pertanyaan/umum','PertanyaanUmumController@index');
+Route::get('/','PertanyaanController@index');
 Route::resource('jawaban', 'JawabanController');
-Route::get('/pertanyaan/pribadi','PertanyaanPribadiController@index2');
+Route::get('/profile','PertanyaanController@index2');
 
 
 

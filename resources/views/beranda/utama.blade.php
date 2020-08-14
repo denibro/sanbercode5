@@ -1,5 +1,11 @@
 
-    <h2>Mennampilkan Pertanyaan Umum</h2>
+@extends('adminlte/master')
+
+@section('title', 'Beranda')
+@section('judul', 'Beranda')
+
+@section('content')  
+    
     @if (session('status_udah'))
         <div class="alert alert-success">
             {{ session('status_udah') }}
@@ -26,3 +32,5 @@
           </li>
         @endforeach
     </ul>
+
+@endsection

@@ -1,5 +1,10 @@
+@extends('adminlte/master')
 
-    <h2>Menampilkan Pertanyaan Pribadi</h2>
+@section('title', 'Profile')
+@section('judul', 'Profile')
+
+@section('content')  
+
     @if (session('status_udah'))
         <div class="alert alert-success">
             {{ session('status_udah') }}
@@ -26,3 +31,4 @@
           </li>
         @endforeach
     </ul>
+@endsection
