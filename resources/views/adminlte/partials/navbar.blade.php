@@ -1,5 +1,5 @@
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-<<<<<<< HEAD
+<!-- <<<<<<< HEAD -->
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -15,7 +15,7 @@
         <a href="#" class="nav-link">Contact</a>
       </li>
     </ul>
-=======
+<!-- ======= -->
   <!-- Left navbar links -->
   <ul class="navbar-nav">
     <li class="nav-item">
@@ -28,7 +28,7 @@
       <a href="#" class="nav-link">Contact</a>
     </li>
   </ul>
->>>>>>> 0413778ef52e4adf6d3eb78b5934d8009216def1
+<!-- >>>>>>> 0413778ef52e4adf6d3eb78b5934d8009216def1 -->
 
   <!-- SEARCH FORM -->
   <form class="form-inline ml-3">
