@@ -14,15 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/coba', function () {
-    return view('profile.coba');
-});
-
+Route::get('/', 'PertanyaanController@index');
 
 Route::get('/pertanyaan/create', 'PertanyaanController@create');
 Route::get('/beranda', 'PertanyaanController@index');
 Route::resource('jawaban', 'JawabanController');
-Route::get('/profile', 'PertanyaanController@index2');
+Route::get('/profile', 'PertanyaanController@index2')->name('pertanyaan.profile');
 
 
 

@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  @stack('scrf_token')
+
   <title>@yield('title')</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,47 +20,46 @@
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
+
 <body class="hold-transition sidebar-mini">
-<!-- Site wrapper -->
-<div class="wrapper">
-  <!-- Navbar -->
+  <!-- Site wrapper -->
+  <div class="wrapper">
+    <!-- Navbar -->
 
-@include('adminlte.partials.navbar')
-  <!-- /.navbar -->
+    @include('adminlte.partials.navbar')
+    <!-- /.navbar -->
 
-  <!-- Main Sidebar Container -->
-@include('adminlte.partials.sidebar')
+    <!-- Main Sidebar Container -->
+    @include('adminlte.partials.sidebar')
 
-  <!-- Content Wrapper. Contains page content -->
+    <!-- Content Wrapper. Contains page content -->
 
-<div class="content-wrapper">
- @yield('content')
-</div>
-  <!-- /.content-wrapper -->
+    <div class="content-wrapper">
+      @yield('content')
+    </div>
+    <!-- /.content-wrapper -->
 
-@include('adminlte.partials.footer')
+    @include('adminlte.partials.footer')
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
-</div>
-<!-- ./wrapper -->
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+      <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+  </div>
+  <!-- ./wrapper -->
 
-<!-- jQuery -->
-<script src="{{ asset('adminlte/plugins/jquery/jquery.min.js')}}"></script>
-<!-- Bootstrap 4 -->
-<script src="{{ asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-<!-- AdminLTE App -->
-<script src="{{ asset('adminlte/dist/js/adminlte.min.js')}}"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{{ asset('adminlte/dist/js/demo.js')}}"></script>
+  <!-- jQuery -->
+  <script src="{{ asset('adminlte/plugins/jquery/jquery.min.js')}}"></script>
+  <!-- Bootstrap 4 -->
+  <script src="{{ asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+  <!-- AdminLTE App -->
+  <script src="{{ asset('adminlte/dist/js/adminlte.min.js')}}"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="{{ asset('adminlte/dist/js/demo.js')}}"></script>
 
-@stack('scripts')
+  @stack('scripts')
 
 </body>
+
 </html>
-
-
-

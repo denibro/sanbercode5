@@ -5,7 +5,10 @@
       class="brand-image img-circle elevation-3" style="opacity: .8">
     @if (Auth::user())
     <span class="brand-text font-weight-light">{{ Auth::user()->name }}</span>
+    @else
+    <span class="brand-text font-weight-light">GUEST</span>
     @endif
+
   </a>
 
   <!-- Sidebar -->
