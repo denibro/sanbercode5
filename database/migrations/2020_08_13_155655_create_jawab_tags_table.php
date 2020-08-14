@@ -17,7 +17,7 @@ class CreateJawabTagsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('tag_id');
             $table->unsignedBigInteger('jawaban_id');
-            $table->foreign('tag_id')->references('id')->on('tag_jawabans');
+            $table->foreign('tag_id')->references('id')->on('tags');
             $table->foreign('jawaban_id')->references('id_jawaban')->on('jawabans');
         });
     }

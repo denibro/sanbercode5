@@ -22,7 +22,7 @@ class CreateJawabansTable extends Migration
             $table->unsignedBigInteger('tag_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('pertanyaan_id')->references('id_pertanyaan')->on('pertanyaans');
-            $table->foreign('tag_id')->references('id')->on('tag_jawabans');
+            $table->foreign('tag_id')->references('id')->on('jawab_tags');
         });
     }
 

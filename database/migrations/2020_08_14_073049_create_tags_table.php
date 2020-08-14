@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTagJawabansTable extends Migration
+class CreateTagsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateTagJawabansTable extends Migration
      */
     public function up()
     {
-        Schema::create('tag_jawabans', function (Blueprint $table) {
+        Schema::create('tags', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nama_tag');
-            $table->unsignedBigInteger('jawaban_id');
-            $table->foreign('jawaban_id')->references('id')->on('users');
         });
     }
 
@@ -28,6 +26,6 @@ class CreateTagJawabansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tag_jawabans');
+        Schema::dropIfExists('tags');
     }
 }

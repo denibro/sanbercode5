@@ -17,7 +17,7 @@ class CreateTanyaTagsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('tag_id');
             $table->unsignedBigInteger('pertanyaan_id');
-            $table->foreign('tag_id')->references('id')->on('tag_pertanyaans');
+            $table->foreign('tag_id')->references('id')->on('tags');
             $table->foreign('pertanyaan_id')->references('id_pertanyaan')->on('pertanyaans');
         });
     }

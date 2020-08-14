@@ -21,7 +21,7 @@ class CreatePertanyaansTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('tag_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('tag_id')->references('id')->on('tag_pertanyaans');
+            $table->foreign('tag_id')->references('id')->on('tanya_tags');
         });
     }
 
