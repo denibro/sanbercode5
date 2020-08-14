@@ -25,7 +25,7 @@ class PertanyaanController extends Controller
     public function index()
     {
         $pertanyaans = Pertanyaan::all();
-        return view('beranda.utama', ['pertanyaans' => $pertanyaans]);
+        return view('beranda.utama', compact('pertanyaans'));
     }
 
     public function index2()
@@ -85,7 +85,8 @@ class PertanyaanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = user::find($id);
+        return view('profile.ubah_profile', compact('user') );
     }
 
     /**
@@ -97,7 +98,13 @@ class PertanyaanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->updated_at = now();
+        $user->save();
+        // dd($user);
+        return redirect('/profile')->with('status_ubah','Pertanyaan Berhasil Diubah');
     }
 
     /**
@@ -108,6 +115,9 @@ class PertanyaanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pertanyaan = Pertanyaan::find($id);
+        $pertanyaan->delete();
+
+        return redirect('/profile')->with('status','Pertanyaan Berhasil Dihapus');
     }
 }

@@ -1,7 +1,6 @@
 @extends('adminlte/master')
 
 @section('title', 'Profile')
-@section('judul', 'Profile')
 
 @section('content')  
 
@@ -15,8 +14,11 @@
             {{ session('status') }}
         </div>
     @endif
+    <div class="text-center font-weight-bold pt-3">
+      <h3>Profile</h3>
+    </div>
     <div class="container">
-      <div class="row pt-5">
+      <div class="row pt-3">
         <div class="col-sm-3">
         </div>
         <div class="col-sm-6">
@@ -40,7 +42,7 @@
               </table>
               <h6 class="text-muted">{{ $user->created_at }}</h6>
               <h6 class="text-muted">{{ $user->update_at }}</h6>
-              <a href="" class="btn btn-primary">Ubah</a>
+              <a href="pertanyaan/{{$user->id}}/edit" class="btn btn-primary">Ubah</a>
             </div>
           </div>
         </div>
@@ -66,7 +68,11 @@
                       <i class="far fa-thumbs-down"></i>
                       {{ $pertanyaan->downvote }}
                     </a>
-                    <a href=""class="badge badge-danger badge-pill">Hapus</a>
+                    <form action="/pertanyaan/{{$pertanyaan->id_pertanyaan}}" method="post" class="d-inline ml-5">
+                      @method('delete')
+                      @csrf
+                      <button type="submit" class="btn btn-danger mr-1">Hapus</button>
+                    </form>
                   </span>
                 </li>
               @endforeach

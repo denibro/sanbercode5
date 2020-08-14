@@ -1,7 +1,6 @@
 @extends('adminlte/master')
 
 @section('title', 'Beranda')
-@section('judul', 'Beranda')
 
 @push('head-script')
 <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
@@ -16,18 +15,6 @@
 @endpush
 
 @section('content')
-
-@if (session('status_udah'))
-<div class="alert alert-success">
-    {{ session('status_udah') }}
-</div>
-@endif
-@if (session('status'))
-<div class="alert alert-warning">
-    {{ session('status') }}
-</div>
-@endif
-
 <div class="container p-3">
 
     <form action="/pertanyaan" method="POST">
@@ -81,6 +68,7 @@
     </ul>
 </div>
 @endsection
+
 @push('scripts')
 <script>
     CKEDITOR.replace('my-editor', options);
