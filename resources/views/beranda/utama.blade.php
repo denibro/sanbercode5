@@ -29,21 +29,25 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="judulPertanyaan">Judul</label>
-                        <input type="text" class="form-control" name="judulPertanyaan" id="judulPertanyaan">
+                        <input type="text" class="form-control" name="judulPertanyaan" id="judulPertanyaan" placeholder="Enter Judul">
                     </div>
                     <div class="form-group">
                         <label for="my-editor">Isi</label>
                         <textarea id="my-editor" name="isiPertanyaan" class="form-control"></textarea>
                     </div>
+                    <div class="form-group">
+                        <label for="tagPertanyaan">Tag</label>
+                        <input type="text" class="form-control" name="tagPertanyaan" id="tagPertanyaan" placeholder="Enter Tag">
+                    </div>
+                    
 
-                    <input type="submit" class="btn btn-primary float-right mt-1" value="POST">
+                    <input type="submit" class="btn btn-primary float-left mt-1" value="POST">
                 </div>
             </div>
         </div>
     </form>
 
     <ul class="list-group mt-3">
-
         {{-- card --}}
         @foreach($pertanyaans as $pertanyaan)
         <div class="card text-center bg-light">

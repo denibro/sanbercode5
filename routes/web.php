@@ -24,6 +24,7 @@ Route::delete('/pertanyaan/{pertanyaan_id}', 'PertanyaanController@destroy');
 Route::get('/', 'PertanyaanController@index');
 
 Route::get('/beranda', 'PertanyaanController@index');
+
 Route::resource('jawaban', 'JawabanController');
 Route::get('/profile', 'PertanyaanController@index2')->name('pertanyaan.profile');
 
