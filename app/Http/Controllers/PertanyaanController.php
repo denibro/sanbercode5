@@ -9,6 +9,7 @@ use App\Pertanyaan;
 use App\User;
 use App\Vote_pertanyaan;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\Console\Question\Question;
 
 class PertanyaanController extends Controller
 {
@@ -33,7 +34,7 @@ class PertanyaanController extends Controller
         $pertanyaans = $user->pertanyaan;
         // $profile = User::where('name',Auth::user()->name)->first();
         // dd($vote);
-        return view('profile.pertanyaan_pribadi', ['pertanyaans'=>$pertanyaans,'user'=>$user]);
+        return view('profile.pertanyaan_pribadi', ['pertanyaans' => $pertanyaans, 'user' => $user]);
     }
 
     /**
@@ -54,7 +55,15 @@ class PertanyaanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $Question = new Pertanyaan;
+
+        $Question->judul = $request->judulPertanyaan;
+        $Question->isi = $request->isiPertanyaan;
+        $Question->user_id = Auth::user()->id;
+
+        $Question->save();
+
+        return redirect('beranda');
     }
 
     /**

@@ -14,23 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// <<<<<<< HEAD
-Route::get('/', function () {
-    return view('welcome');
-});
-
-// Route::get('/pertanyaan','PertanyaanController@index');
-// Route::get('/pertanyaan/create','PertanyaanController@create');
-// Route::post('/pertanyaan','PertanyaanController@store');
-// Route::get('/pertanyaan/{pertanyaan_id}','PertanyaanController@show');
-// Route::get('/pertanyaan/{pertanyaan_id}/edit','PertanyaanController@edit');
-// Route::put('/pertanyaan/{pertanyaan_id}','PertanyaanController@update');
-// Route::delete('/pertanyaan/{pertanyaan_id}','PertanyaanController@destroy');
-// =======
+// Route::get('/pertanyaan', 'PertanyaanController@index');
+// Route::get('/pertanyaan/create', 'PertanyaanController@create');
+// Route::post('/pertanyaan', 'PertanyaanController@store');
+// Route::get('/pertanyaan/{pertanyaan_id}', 'PertanyaanController@show');
+// Route::get('/pertanyaan/{pertanyaan_id}/edit', 'PertanyaanController@edit');
+// Route::put('/pertanyaan/{pertanyaan_id}', 'PertanyaanController@update');
+// Route::delete('/pertanyaan/{pertanyaan_id}', 'PertanyaanController@destroy');
 // Route::get('/', 'PertanyaanController@index');
 
-// Route::get('/pertanyaan/create', 'PertanyaanController@create');
-// >>>>>>> 30bfda3f3ab1891f2ccc0167ecc1b523fd4d8b58
 Route::get('/beranda', 'PertanyaanController@index');
 Route::resource('jawaban', 'JawabanController');
 Route::get('/profile', 'PertanyaanController@index2')->name('pertanyaan.profile');
@@ -42,6 +34,10 @@ Route::resource('jawaban', 'JawabanController');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

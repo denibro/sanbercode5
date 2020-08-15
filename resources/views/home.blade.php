@@ -8,8 +8,8 @@
                 <div class="card-header">Silahkan Masuk</div>
 
                 <div class="card-body">
-                   <a href="/beranda" class="btn btn-danger">Beranda</a>
-                   <a href="/profile" class="btn btn-primary ml-2">Profile</a>
+                    <a href="/beranda" class="btn btn-danger">Beranda</a>
+                    <a href="/profile" class="btn btn-primary ml-2">Profile</a>
 
                 </div>
 
