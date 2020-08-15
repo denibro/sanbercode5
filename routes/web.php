@@ -26,9 +26,8 @@ Route::get('/', function () {
 });
 
 Route::get('/beranda', 'PertanyaanController@index');
-Route::resource('jawaban', 'JawabanController');
 Route::get('/profile', 'PertanyaanController@index2')->name('pertanyaan.profile');
-
+Route::put('/ket_pertanyaan/{pertanyaan_id}', 'PertanyaanController@update2');
 
 
 Route::resource('pertanyaan', 'PertanyaanController');
@@ -37,9 +36,9 @@ Route::resource('jawaban', 'JawabanController');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
-    \UniSharp\LaravelFilemanager\Lfm::routes();
-});
+// Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+//     \UniSharp\LaravelFilemanager\Lfm::routes();
+// });
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

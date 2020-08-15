@@ -109,7 +109,26 @@ class PertanyaanController extends Controller
         // dd($user);
         return redirect('/profile')->with('status_ubah','Pertanyaan Berhasil Diubah');
     }
-
+    public function update(Request $request, $id)
+    {
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->updated_at = now();
+        $user->save();
+        // dd($user);
+        return redirect('/profile')->with('status_ubah','Pertanyaan Berhasil Diubah');
+    }
+    public function update2(Request $request, $id)
+    {
+        // $user = User::find($id);
+        // $user->name = $request->name;
+        // $user->email = $request->email;
+        // $user->updated_at = now();
+        // $user->save();
+        // // dd($user);
+        // return redirect('/profile')->with('status_ubah','Pertanyaan Berhasil Diubah');
+    }
     /**
      * Remove the specified resource from storage.
      *

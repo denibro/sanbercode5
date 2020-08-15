@@ -79,11 +79,12 @@
                       <i class="far fa-thumbs-down"></i>
                       {{ $pertanyaan->downvote }}
                     </a>
-                    <form action="/pertanyaan/{{$pertanyaan->id_pertanyaan}}" method="post" class="d-inline mr-5 float-right">
+                    <form action="/pertanyaan/{{$pertanyaan->id_pertanyaan}}" method="post" class="d-inline mr-4 float-right">
                       @method('delete')
                       @csrf
                       <button type="submit" class="btn btn-danger mr-1">Hapus</button>
                     </form>
+                    <p class="text-muted">{{ $pertanyaan->ket }}</p>
                     <form method="get" action="/pertanyaan/{{$pertanyaan->id_pertanyaan}}">
                       <button class="badge badge-danger badge-pill d-inline" type="submit" data-toggle="collapse" data-target="#<?php echo $collapse; ?>" aria-expanded="true" aria-controls="<?php echo $collapse; ?>">Jawaban</button>
                     </form>
@@ -106,6 +107,11 @@
                           <p class="text-muted">{{ $jawaban->created_at }}</p>
                           <p class="text-muted">{{ $jawaban->updated_at }}</p>
                         </span>
+                        <form action="/pertanyaan/{{$jawaban->id_jawaban}}" method="post" class="d-inline mr-4 float-right">
+                          @method('put')
+                          @csrf
+                          <button class="btn btn-link">pilih</button>
+                        </form>
                         <span>
                           <a href=""class="badge badge-primary badge-pill">
                             <i class="far fa-thumbs-up"></i>
