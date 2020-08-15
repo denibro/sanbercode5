@@ -112,7 +112,6 @@ class PertanyaanController extends Controller
         // dd($user);
         return redirect('/profile')->with('status_ubah','Pertanyaan Berhasil Diubah');
     }
-    
     public function update2(Request $request, $id)
     {
         $jawaban = Jawaban::where('id_jawaban',$id)->first();

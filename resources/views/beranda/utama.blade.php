@@ -29,7 +29,8 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="judulPertanyaan">Judul</label>
-                        <input type="text" class="form-control" name="judulPertanyaan" id="judulPertanyaan" placeholder="Enter Judul">
+                        <input type="text" class="form-control" name="judulPertanyaan" id="judulPertanyaan"
+                            placeholder="Enter Judul">
                     </div>
                     <div class="form-group">
                         <label for="my-editor">Isi</label>
@@ -37,16 +38,17 @@
                     </div>
                     <div class="form-group">
                         <label for="tagPertanyaan">Tag</label>
-                        <input type="text" class="form-control" name="tagPertanyaan" id="tagPertanyaan" placeholder="Enter Tag">
+                        <input type="text" class="form-control" name="tagPertanyaan" id="tagPertanyaan"
+                            placeholder="Enter Tag">
                     </div>
-                    
+
 
                     <input type="submit" class="btn btn-primary float-left mt-1" value="POST">
                 </div>
             </div>
         </div>
     </form>
-    
+
     <ul class="list-group mt-3">
         {{-- card --}}
         @foreach($pertanyaans as $pertanyaan)
@@ -81,28 +83,6 @@
             </div>
         </div>
         @endforeach
-        {{-- end of card --}}
-
-        {{-- <li class="list-group-item d-flex justify-content-between align-items-center">
-            <span>
-                <h4 class="font-weight-bold">{{ $pertanyaan->judul }}</h5>
-        <h5>{!! $pertanyaan->isi !!}</h6>
-            <div class="card-footer text-muted">
-                <p class="text-muted">Created At {{ $pertanyaan->created_at }}</p>
-                <p class="text-muted">Edited At {{ $pertanyaan->updated_at }}</p>
-            </div>
-            </span>
-            <div class="d-flex justify-content-end">
-                <a href="{{route('jawaban.create')}}" class="badge badge-primary badge-pill mr-1"><i
-                        class="fa fa-comments" aria-hidden="true"><br>Answers</i></a>
-
-                <a href="" class="badge badge-primary badge-pill"><i class="fa fa-chevron-up"
-                        aria-hidden="true"></i><br>Upvote</a>
-
-                <a href="" class="badge badge-primary badge-pill ml-1">Downvote<br><i class="fa fa-chevron-down"
-                        aria-hidden="true"></i></a>
-            </div>
-            </li> --}}
     </ul>
 </div>
 @endsection
