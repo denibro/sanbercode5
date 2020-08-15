@@ -16,6 +16,12 @@ class Jawabancontroller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+    }
+
     public function index()
     {
         //
@@ -61,8 +67,12 @@ class Jawabancontroller extends Controller
         }
         $jawaban = new Jawaban;
         $jawaban->isi = $request->isi;
+        $jawaban->user_id = Auth::id();
+        $jawaban->pertanyaan_id = $request->id_pertanyaan;
         $jawaban->save();
-        return redirect('/jawaban/create')->with('status_done', 'Pertanyaan Berhasil Ditambahkan');
+        $jawaban->tags()->sync($tag_ids);
+
+        return redirect('/pertanyaan')->with('status_done', 'Pertanyaan Berhasil Ditambahkan');
     }
 
     /**
@@ -84,7 +94,7 @@ class Jawabancontroller extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('beranda.jawaban.create',['id_pertanyaan'=>$id]);
     }
 
     /**

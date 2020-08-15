@@ -15,6 +15,12 @@
 @endpush
 
 @section('content')
+@if (session('status_done'))
+    <div class="alert alert-success">
+        {{ session('status_done') }}
+    </div>
+@endif
+
 <div class="container p-3">
 
     <form action="/pertanyaan" method="POST">
@@ -51,6 +57,7 @@
 
     <ul class="list-group mt-3">
         {{-- card --}}
+        <?php $i=0; ?>
         @foreach($pertanyaans as $pertanyaan)
         <div class="card text-center bg-light">
             <div class="card-header">
@@ -58,10 +65,28 @@
             </div>
             <div class="card-body">
                 <p class="card-text">{!! $pertanyaan->isi !!}</p>
-                <div class="col-12">
+                <p>
+                    oleh: <?php echo $names[$i];
+                    $collapse = "collapse".$pertanyaan->id_pertanyaan;
+                    ?>
+                </p>
+                <?php 
+                    $tags[$i];
+                    foreach ($tags[$i] as $tag) 
+                    {
+                        ?>
+                        <a href="" class="badge badge-pill badge-primary"><?php echo $tag; ?></a>
+                        <?php
+                    }
+                    $i++;
+                ?>
+                <div class="col-12 mt-3">
                     <div class="d-flex justify-content-center card-columns">
-                        <a href=" {{route('jawaban.create')}}" class="badge badge-pill badge-warning mr-1"><i
-                                class="fa fa-comments" aria-hidden="true"><br>Answers</i></a>
+                        <form method="get" action="/pertanyaan_umum/{{$pertanyaan->id_pertanyaan}}">
+                          <button class="badge badge-pill badge-warning mr-1" type="submit" data-toggle="collapse" data-target="#<?php echo $collapse; ?>" aria-expanded="true" aria-controls="<?php echo $collapse; ?>"><i
+                                class="fa fa-comments" aria-hidden="true"><br>Answers</i></button>
+                        </form>
+                        
 
                         <form action="/votePertanyaan/{{ $pertanyaan->id_pertanyaan }}" method="POST">
                             @csrf
@@ -73,6 +98,31 @@
                                 aria-hidden="true"> <br>Downvote</i></a>
                     </div>
                 </div>
+                <div id="<?php echo $collapse; ?>" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                  @if (session('jawabans'))
+                    <h3>Jawaban</h3>
+                    @foreach(session('jawabans') as $jawaban)
+                      @if($pertanyaan->id_pertanyaan == $jawaban->pertanyaan_id)
+                      <div class="">
+                          <p class="card-text">{!! $jawaban->isi !!}</p>
+                          <p class="text-muted">{{ $jawaban->created_at }}</p>
+                          <p class="text-muted">{{ $jawaban->updated_at }}</p>
+                          <a href=""class="badge badge-primary badge-pill">
+                            <i class="far fa-thumbs-up"></i>
+                            {{ $jawaban->upvote }}
+                          </a>
+                          <a href=""class="badge badge-warning badge-pill">
+                            <i class="far fa-thumbs-down"></i>
+                            {{ $jawaban->downvote }}
+                          </a>
+                        </div>
+                      @endif
+                    @endforeach
+                  @endif
+                  <a href="jawaban/{{$pertanyaan->id_pertanyaan}}/edit" class="badge badge-pill badge-warning mr-1">Tambah Jawaban</a>
+                </div>
+              </div>
             </div>
             <div class="card-footer text-muted">
                 <div class="d-flex justify-content-center card-columns">

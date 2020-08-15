@@ -29,6 +29,7 @@ Route::resource('jawaban', 'JawabanController');
 
 Route::get('/profile', 'PertanyaanController@index2')->name('pertanyaan.profile');
 Route::put('/ket_pertanyaan/{pertanyaan_id}', 'PertanyaanController@update2');
+Route::get('/pertanyaan_umum/{pertanyaan_id}', 'PertanyaanController@show_umum');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

@@ -17,4 +17,12 @@ class Pertanyaan extends Model
     {
         return $this->hasMany('App\Jawaban','pertanyaan_id');
     }
+    public function tag()
+    {
+        return $this->hasMany('App\Tags','pertanyaan_id');
+    }
+    public function tags()
+    {
+    	return $this->belongsToMany('App\Tags', 'tanya_tags', 'pertanyaan_id', 'tag_id');
+    }
 }
