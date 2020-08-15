@@ -27,7 +27,10 @@ class PertanyaanController extends Controller
     {
         $pertanyaans = Pertanyaan::all();
         return view('beranda.utama', compact('pertanyaans'));
+        
     }
+
+
 
     public function index2()
     {

@@ -26,6 +26,11 @@ Route::get('/', function () {
 });
 
 Route::get('/beranda', 'PertanyaanController@index');
+<<<<<<< HEAD
+=======
+Route::get('/', 'PertanyaanController@index');
+Route::resource('jawaban', 'JawabanController');
+>>>>>>> 3088b672fab22b7884fbb6868085f988c36cf4f4
 Route::get('/profile', 'PertanyaanController@index2')->name('pertanyaan.profile');
 Route::put('/ket_pertanyaan/{pertanyaan_id}', 'PertanyaanController@update2');
 
