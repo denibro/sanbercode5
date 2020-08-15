@@ -26,7 +26,14 @@ class PertanyaanController extends Controller
     public function index()
     {
         $pertanyaans = Pertanyaan::all();
-        return view('beranda.utama', compact('pertanyaans'));
+        foreach ($pertanyaans as $pertanyaan) {
+            $name = $pertanyaan->user_id;
+            $name = User::find($name)->name;
+            $names[] = $name; 
+        }
+        // dd($names[2]);
+        // $pertanyaans->nama = User::where('id',$pertanyaans->user_id)->first();
+        return view('beranda.utama', ['pertanyaans'=>$pertanyaans,'names'=>$names]);
         
     }
 
@@ -82,6 +89,12 @@ class PertanyaanController extends Controller
         // dd($jawabans);
         return redirect('/profile')->with('jawabans',$jawabans);
     }
+    public function show_umum($id)
+    {
+        $jawabans = Jawaban::where('pertanyaan_id',$id)->get();
+        // dd($jawabans);
+        return redirect('/pertanyaan')->with('jawabans',$jawabans);
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -94,6 +107,7 @@ class PertanyaanController extends Controller
         $user = user::find($id);
         return view('profile.ubah_profile', compact('user') );
     }
+
 
     /**
      * Update the specified resource in storage.

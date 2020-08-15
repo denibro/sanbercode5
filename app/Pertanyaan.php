@@ -17,4 +17,5 @@ class Pertanyaan extends Model
     {
         return $this->hasMany('App\Jawaban','pertanyaan_id');
     }
+    
 }
