@@ -26,7 +26,6 @@ class PertanyaanController extends Controller
     public function index()
     {
         $pertanyaans = Pertanyaan::all();
-<<<<<<< HEAD
         foreach ($pertanyaans as $pertanyaan) {
             $name = $pertanyaan->user_id;
             $name = User::find($name)->name;
@@ -35,10 +34,7 @@ class PertanyaanController extends Controller
         // dd($names[2]);
         // $pertanyaans->nama = User::where('id',$pertanyaans->user_id)->first();
         return view('beranda.utama', ['pertanyaans'=>$pertanyaans,'names'=>$names]);
-        
-=======
-        return view('beranda.utama', compact('pertanyaans'));
->>>>>>> 7b1748a1e242fbb7d09830c957224e6b7264850d
+ 
     }
 
 
