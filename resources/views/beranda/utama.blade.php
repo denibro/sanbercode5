@@ -46,7 +46,7 @@
             </div>
         </div>
     </form>
-
+    
     <ul class="list-group mt-3">
         {{-- card --}}
         @foreach($pertanyaans as $pertanyaan)
