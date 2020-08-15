@@ -70,6 +70,8 @@ class Jawabancontroller extends Controller
         $jawaban->user_id = Auth::id();
         $jawaban->pertanyaan_id = $request->id_pertanyaan;
         $jawaban->save();
+        $jawaban->tags()->sync($tag_ids);
+
         return redirect('/pertanyaan')->with('status_done', 'Pertanyaan Berhasil Ditambahkan');
     }
 

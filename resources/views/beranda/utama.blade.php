@@ -66,11 +66,21 @@
             <div class="card-body">
                 <p class="card-text">{!! $pertanyaan->isi !!}</p>
                 <p>
-                    oleh: <?php echo $names[$i]; $i++;  
+                    oleh: <?php echo $names[$i];
                     $collapse = "collapse".$pertanyaan->id_pertanyaan;
                     ?>
                 </p>
-                <div class="col-12">
+                <?php 
+                    $tags[$i];
+                    foreach ($tags[$i] as $tag) 
+                    {
+                        ?>
+                        <a href="" class="badge badge-pill badge-primary"><?php echo $tag; ?></a>
+                        <?php
+                    }
+                    $i++;
+                ?>
+                <div class="col-12 mt-3">
                     <div class="d-flex justify-content-center card-columns">
                         <form method="get" action="/pertanyaan_umum/{{$pertanyaan->id_pertanyaan}}">
                           <button class="badge badge-pill badge-warning mr-1" type="submit" data-toggle="collapse" data-target="#<?php echo $collapse; ?>" aria-expanded="true" aria-controls="<?php echo $collapse; ?>"><i
