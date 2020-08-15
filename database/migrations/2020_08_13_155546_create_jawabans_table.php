@@ -16,8 +16,6 @@ class CreateJawabansTable extends Migration
         Schema::create('jawabans', function (Blueprint $table) {
             $table->bigIncrements('id_jawaban');
             $table->string('isi');
-            $table->integer('upvote');
-            $table->integer('downvote');
             $table->timestamps();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('pertanyaan_id');

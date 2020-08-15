@@ -26,7 +26,9 @@ class PertanyaanController extends Controller
     public function index()
     {
         $pertanyaans = Pertanyaan::all();
-        return view('beranda.utama', compact('pertanyaans'));
+        $vote = Vote_pertanyaan::All();
+
+        return view('beranda.utama', compact('pertanyaans', 'vote'));
     }
 
 

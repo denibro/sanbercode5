@@ -63,8 +63,11 @@
                         <a href=" {{route('jawaban.create')}}" class="badge badge-pill badge-warning mr-1"><i
                                 class="fa fa-comments" aria-hidden="true"><br>Answers</i></a>
 
-                        <a href="" class="badge badge-pill badge-success"><i class="fa fa-chevron-up"
-                                aria-hidden="true"><br>Upvote</i></a>
+                        <form action="/votePertanyaan/{{ $pertanyaan->id_pertanyaan }}" method="POST">
+                            @csrf
+                            <button type="submit" class="badge badge-pill badge-success btn-outline-success"><i
+                                    class="fa fa-chevron-up" aria-hidden="true"><br>Upvote</i></button>
+                        </form>
 
                         <a href="" class="badge badge-pill badge-danger ml-1"><i class="fa fa-chevron-down"
                                 aria-hidden="true"> <br>Downvote</i></a>
