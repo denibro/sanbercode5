@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', 'PertanyaanController@index');
 
 Route::get('/beranda', 'PertanyaanController@index');
-
+Route::get('/', 'PertanyaanController@index');
 Route::resource('jawaban', 'JawabanController');
 Route::get('/profile', 'PertanyaanController@index2')->name('pertanyaan.profile');
 
