@@ -28,7 +28,7 @@ class Jawabancontroller extends Controller
      */
     public function create()
     {
-        return view('jawaban.create');
+        return view('beranda.jawaban.create');
     }
 
     /**

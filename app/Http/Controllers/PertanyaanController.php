@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Pertanyaan;
+use App\Jawaban;
 use App\User;
 use App\Vote_pertanyaan;
 use Illuminate\Support\Facades\Auth;
@@ -35,8 +36,8 @@ class PertanyaanController extends Controller
     {
         $user = Auth::user();
         $pertanyaans = $user->pertanyaan;
+
         // $profile = User::where('name',Auth::user()->name)->first();
-        // dd($vote);
         return view('profile.pertanyaan_pribadi', ['pertanyaans' => $pertanyaans, 'user' => $user]);
     }
 
@@ -77,7 +78,9 @@ class PertanyaanController extends Controller
      */
     public function show($id)
     {
-        //
+        $jawabans = Jawaban::where('pertanyaan_id',$id)->get();
+        // dd($jawabans);
+        return redirect('/profile')->with('jawabans',$jawabans);
     }
 
     /**
@@ -109,7 +112,16 @@ class PertanyaanController extends Controller
         // dd($user);
         return redirect('/profile')->with('status_ubah','Pertanyaan Berhasil Diubah');
     }
-
+    public function update2(Request $request, $id)
+    {
+        // $user = User::find($id);
+        // $user->name = $request->name;
+        // $user->email = $request->email;
+        // $user->updated_at = now();
+        // $user->save();
+        // // dd($user);
+        // return redirect('/profile')->with('status_ubah','Pertanyaan Berhasil Diubah');
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -118,6 +130,7 @@ class PertanyaanController extends Controller
      */
     public function destroy($id)
     {
+        $jawabans = Jawaban::where('pertanyaan_id',$id)->delete();
         $pertanyaan = Pertanyaan::find($id);
         $pertanyaan->delete();
 
