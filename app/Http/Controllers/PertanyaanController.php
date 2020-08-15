@@ -112,25 +112,24 @@ class PertanyaanController extends Controller
         // dd($user);
         return redirect('/profile')->with('status_ubah','Pertanyaan Berhasil Diubah');
     }
-    public function update(Request $request, $id)
-    {
-        $user = User::find($id);
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->updated_at = now();
-        $user->save();
-        // dd($user);
-        return redirect('/profile')->with('status_ubah','Pertanyaan Berhasil Diubah');
-    }
+    
     public function update2(Request $request, $id)
     {
-        // $user = User::find($id);
-        // $user->name = $request->name;
-        // $user->email = $request->email;
-        // $user->updated_at = now();
-        // $user->save();
-        // // dd($user);
-        // return redirect('/profile')->with('status_ubah','Pertanyaan Berhasil Diubah');
+        $jawaban = Jawaban::where('id_jawaban',$id)->first();
+        $pertanyaan = Pertanyaan::where('id_pertanyaan',$jawaban->pertanyaan_id)->first();
+        if($pertanyaan->ket == 'pertanyaan selesai dipilih')
+        {
+            return redirect('/profile')->with('pernah_diubah','Pertanyaan sudah pernah dipilih');
+        }
+        else
+        {
+            $pertanyaan->ket = 'pertanyaan selesai dipilih';
+            $pertanyaan->save();
+            $user = User::where('id',$jawaban->user_id)->first();
+            $user->jml_reputasi += 15;
+            $user->save();
+            return redirect('/profile');
+        }
     }
     /**
      * Remove the specified resource from storage.

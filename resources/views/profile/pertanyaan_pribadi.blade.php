@@ -4,7 +4,7 @@
 
 @section('content')  
 
-    @if (session('status_udah'))
+    @if (session('status_ubah'))
         <div class="alert alert-success">
             {{ session('status_udah') }}
         </div>
@@ -12,6 +12,11 @@
     @if (session('status'))
         <div class="alert alert-warning">
             {{ session('status') }}
+        </div>
+    @endif
+     @if (session('pernah_diubah'))
+        <div class="alert alert-warning">
+            {{ session('pernah_diubah') }}
         </div>
     @endif
     <div class="text-center font-weight-bold pt-3">
@@ -79,17 +84,18 @@
                       <i class="far fa-thumbs-down"></i>
                       {{ $pertanyaan->downvote }}
                     </a>
-                    <form action="/pertanyaan/{{$pertanyaan->id_pertanyaan}}" method="post" class="d-inline mr-4 float-right">
+                    <form action="/pertanyaan/{{$pertanyaan->id_pertanyaan}}" method="post" class=" mr-4 float-right">
                       @method('delete')
                       @csrf
                       <button type="submit" class="btn btn-danger mr-1">Hapus</button>
                     </form>
-                    <p class="text-muted">{{ $pertanyaan->ket }}</p>
+                    
                     <form method="get" action="/pertanyaan/{{$pertanyaan->id_pertanyaan}}">
                       <button class="badge badge-danger badge-pill d-inline" type="submit" data-toggle="collapse" data-target="#<?php echo $collapse; ?>" aria-expanded="true" aria-controls="<?php echo $collapse; ?>">Jawaban</button>
                     </form>
                     
                   </span>
+                  <p class="text-muted mr-4 float-right">{{ $pertanyaan->ket }}</p>
               </div>
 
               <div id="<?php echo $collapse; ?>" aria-labelledby="headingOne" data-parent="#accordionExample">
@@ -107,7 +113,7 @@
                           <p class="text-muted">{{ $jawaban->created_at }}</p>
                           <p class="text-muted">{{ $jawaban->updated_at }}</p>
                         </span>
-                        <form action="/pertanyaan/{{$jawaban->id_jawaban}}" method="post" class="d-inline mr-4 float-right">
+                        <form action="/ket_pertanyaan/{{$jawaban->id_jawaban}}" method="post" class="d-inline mr-4 float-right">
                           @method('put')
                           @csrf
                           <button class="btn btn-link">pilih</button>
