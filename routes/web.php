@@ -21,7 +21,9 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/pertanyaan/{pertanyaan_id}/edit', 'PertanyaanController@edit');
 // Route::put('/pertanyaan/{pertanyaan_id}', 'PertanyaanController@update');
 // Route::delete('/pertanyaan/{pertanyaan_id}', 'PertanyaanController@destroy');
-// Route::get('/', 'PertanyaanController@index');
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::get('/beranda', 'PertanyaanController@index');
 Route::resource('jawaban', 'JawabanController');
