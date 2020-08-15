@@ -40,8 +40,13 @@ class PertanyaanController extends Controller
             $tag_s [] = $tag_;
         }
         // $pertanyaans->nama = User::where('id',$pertanyaans->user_id)->first();
+<<<<<<< HEAD
         return view('beranda.utama', ['pertanyaans'=>$pertanyaans,'names'=>$names, 'tags'=>$tag_s]);
   
+=======
+        return view('beranda.utama', ['pertanyaans'=>$pertanyaans,'names'=>$names]);
+ 
+>>>>>>> 3b7e2d74085e7a122cf5d8e9c5f7fbc1144c0c53
     }
 
 
