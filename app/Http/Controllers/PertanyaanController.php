@@ -27,7 +27,6 @@ class PertanyaanController extends Controller
     {
         $pertanyaans = Pertanyaan::all();
         return view('beranda.utama', compact('pertanyaans'));
-        
     }
 
 
@@ -67,7 +66,7 @@ class PertanyaanController extends Controller
 
         $Question->save();
 
-        return redirect('beranda');
+        return redirect('/');
     }
 
     /**
@@ -78,9 +77,9 @@ class PertanyaanController extends Controller
      */
     public function show($id)
     {
-        $jawabans = Jawaban::where('pertanyaan_id',$id)->get();
+        $jawabans = Jawaban::where('pertanyaan_id', $id)->get();
         // dd($jawabans);
-        return redirect('/profile')->with('jawabans',$jawabans);
+        return redirect('/profile')->with('jawabans', $jawabans);
     }
 
     /**
@@ -92,7 +91,7 @@ class PertanyaanController extends Controller
     public function edit($id)
     {
         $user = user::find($id);
-        return view('profile.ubah_profile', compact('user') );
+        return view('profile.ubah_profile', compact('user'));
     }
 
     /**
@@ -110,21 +109,18 @@ class PertanyaanController extends Controller
         $user->updated_at = now();
         $user->save();
         // dd($user);
-        return redirect('/profile')->with('status_ubah','Pertanyaan Berhasil Diubah');
+        return redirect('/profile')->with('status_ubah', 'Pertanyaan Berhasil Diubah');
     }
     public function update2(Request $request, $id)
     {
-        $jawaban = Jawaban::where('id_jawaban',$id)->first();
-        $pertanyaan = Pertanyaan::where('id_pertanyaan',$jawaban->pertanyaan_id)->first();
-        if($pertanyaan->ket == 'pertanyaan selesai dipilih')
-        {
-            return redirect('/profile')->with('pernah_diubah','Pertanyaan sudah pernah dipilih');
-        }
-        else
-        {
+        $jawaban = Jawaban::where('id_jawaban', $id)->first();
+        $pertanyaan = Pertanyaan::where('id_pertanyaan', $jawaban->pertanyaan_id)->first();
+        if ($pertanyaan->ket == 'pertanyaan selesai dipilih') {
+            return redirect('/profile')->with('pernah_diubah', 'Pertanyaan sudah pernah dipilih');
+        } else {
             $pertanyaan->ket = 'pertanyaan selesai dipilih';
             $pertanyaan->save();
-            $user = User::where('id',$jawaban->user_id)->first();
+            $user = User::where('id', $jawaban->user_id)->first();
             $user->jml_reputasi += 15;
             $user->save();
             return redirect('/profile');
@@ -138,10 +134,10 @@ class PertanyaanController extends Controller
      */
     public function destroy($id)
     {
-        $jawabans = Jawaban::where('pertanyaan_id',$id)->delete();
+        $jawabans = Jawaban::where('pertanyaan_id', $id)->delete();
         $pertanyaan = Pertanyaan::find($id);
         $pertanyaan->delete();
 
-        return redirect('/profile')->with('status','Pertanyaan Berhasil Dihapus');
+        return redirect('/profile')->with('status', 'Pertanyaan Berhasil Dihapus');
     }
 }
